@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: backend-migrate
+  namespace: interns
+spec:
+  backoffLimit: 2
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: backend-migrate
+          image: fsft-backend:workshop
+          imagePullPolicy: IfNotPresent
+          command:
+            - bash
+            - -lc
+            - python app/backend_pre_start.py && alembic upgrade head && python app/initial_data.py
+          envFrom:
+            - configMapRef:
+                name: app-config
+            - secretRef:
+                name: app-secret

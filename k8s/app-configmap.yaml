@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: interns
+data:
+  ENVIRONMENT: "local"
+  PROJECT_NAME: "Full Stack FastAPI Project"
+  FRONTEND_HOST: "http://localhost:8080"
+  BACKEND_CORS_ORIGINS: "http://localhost:8080,http://127.0.0.1:8080"
+  POSTGRES_SERVER: "postgres"
+  POSTGRES_PORT: "5432"
+  POSTGRES_DB: "app"
+  POSTGRES_USER: "postgres"
+  SENTRY_DSN: ""
+  SMTP_HOST: ""
+  SMTP_USER: ""
+  SMTP_PASSWORD: ""
+  EMAILS_FROM_EMAIL: "info@example.com"
